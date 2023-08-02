@@ -1,0 +1,19 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": [
+    "oclif",
+    "oclif-typescript"
+  ],
+  "rules": {
+    "camelcase": "off",
+    "@typescript-eslint/ban-ts-comment": [
+      "off",
+      {
+        "ts-ignore": "allow-with-description",
+        "minimumDescriptionLength": 1
+      }
+    ]
+  }
+}
