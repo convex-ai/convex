@@ -48,7 +48,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
  ${Prompt.getSchemaPrompt({
     typeName: 'Response',
     schema: `type Response = {
-// file path, start with pages/api, example: pages/api/user/[id].ts
+// file path, end-with ".ts", start with "pages/api", 
+// example: pages/api/user/[id].ts, pages/api/user.ts
 filepath: string
 // just typescript code.
 content: string
@@ -61,6 +62,10 @@ content: string
         const api = apis[key]
         props.console.log(`Generate ${chalk.bgCyan(key.toUpperCase())} ${chalk.underline(api.operationId)}`)
       }
+
+      const funcs = Object.keys(apis).map(key => apis[key].operationId).join(', ')
+
+      this.console.sendCTOWithEng('engineer', `I've generated the API code for ${path}. include ${funcs}`)
 
       const data = JSON.parse(msg.content ?? '{}')
 

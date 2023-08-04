@@ -1,9 +1,7 @@
 import {Agent, HandleMessageFunc} from '../../agent'
 import {RunProps} from '../../../types/run-props'
 import Prompt from '../../../utils/prompt'
-import {Operation} from '../../spec/openapi/schema'
 import * as fs from 'node:fs'
-import * as path from 'node:path'
 
 export class TiDBServiceAgent extends Agent {
   constructor(path: string, props: RunProps) {

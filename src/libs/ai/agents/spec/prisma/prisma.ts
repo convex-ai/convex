@@ -32,8 +32,14 @@ only response prisma schema file content.
     const handleMessage: HandleMessageFunc = msg => {
       this.memory.set_prisma(msg.content ?? '')
       props.fs.writeFileSync('prisma/schema.prisma', `${PREFIX}\n${msg.content ?? ''}`)
+      this.console.sendCTOWithEng('engineer', '@CTO, it\'s looks good. I will generated prisma client. please review it.')
     }
 
     super('Spec/Prisma', {...props, system_prompt: PROMPT, handleMessage})
+  }
+
+  generate = async (): Promise<void> => {
+    const entities = this.memory.spec?.entities ?? []
+    await this.run(JSON.stringify(entities))
   }
 }

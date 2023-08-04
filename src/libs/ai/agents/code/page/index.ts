@@ -20,6 +20,7 @@ content: string
     const handleMessage: HandleMessageFunc = msg => {
       const data = JSON.parse(msg.content ?? '{}')
       props.fs.writeFileSync(data.filepath, data.content)
+      this.console.sendCTOWithEng('engineer', `I've generated the Page code for ${path}.`)
     }
 
     super('Page', {...props, system_prompt: PROMPT, handleMessage}, path)

@@ -24,6 +24,9 @@ export class ProtocolAgent extends Agent {
      const spec_json = msg.content ?? ''
      this.fs.writeFileSync('.convex/spec.json', spec_json)
      this.memory.load_spec(spec_json)
+     const spec = this.memory.spec
+
+     this.console.sendCTOWithEng('cto', `This project needs\n${spec?.entities.length} Entity, \n${spec?.apis.length} API interfaces, and \n${spec?.pages.length} UI Pages. Also need ChatGPT Plugin Manifest. @Engineer could you review it?`)
    }
 }
 

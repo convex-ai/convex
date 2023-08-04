@@ -2,7 +2,7 @@ import * as fs from 'node:fs'
 
 import * as pathlib from 'node:path'
 import {LogOptions, Terminal} from '../render/terminal'
-import * as chalk from "chalk";
+import * as chalk from 'chalk'
 
 export class CodeSpaceFS {
   private root: string;
@@ -24,12 +24,12 @@ export class CodeSpaceFS {
   public writeFileSync(relative_path: string, data: string): string {
     const path = pathlib.join(this.root, relative_path)
     const hasDir = fs.existsSync(pathlib.dirname(path))
+    this.log(`File: ${chalk.blue.underline(relative_path)}, ${hasDir ? '' : 'with mkdir'}`, {tree: true})
     if (!hasDir) {
       fs.mkdirSync(pathlib.dirname(path), {recursive: true})
     }
 
     fs.writeFileSync(path, data)
-    this.log(`File: ${chalk.blue.underline(relative_path)}. ${!hasDir ? 'with mkdir' : ''}`, {tree: true})
     return path
   }
 }

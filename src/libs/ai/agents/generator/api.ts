@@ -16,6 +16,8 @@ export class ApiGenerator {
       return
     }
 
+    this.props.console.sendCTOWithEng('engineer', 'OpenAPI file is fine. I will generate the API code for you. Please wait a moment.')
+
     for (const path of Object.keys(openapi.paths)) {
       const apis = openapi.paths[path]
       if (apis) {

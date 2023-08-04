@@ -59,11 +59,6 @@ export class Agent {
     return this.handleMessageFn?.(msg)
   }
 
-  generate = async (): Promise<void> => {
-    const entities = this.memory.spec?.entities ?? []
-    await this.run(JSON.stringify(entities))
-  }
-
   async run(input: string): Promise<ChatCompletionRequestMessage | undefined> {
     this.console.l_log()
     ux.action.start(`${chalk.bgGreen.bold(this.namespace)} ${this.description ?? ''}     convex is thinking  ...`)

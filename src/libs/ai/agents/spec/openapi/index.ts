@@ -25,6 +25,7 @@ export class OpenAPIAgent extends Agent {
     const openapi = msg.content ?? ''
     this.fs.writeFileSync('.convex/openapi.json', openapi)
     this.memory.load_openapi(openapi)
+    this.console.sendCTOWithEng('cto', "I've created the OpenAPI 3.0.1 schema file. @Engineer, could you review it?")
   }
 
   generate = async (): Promise<void> => {

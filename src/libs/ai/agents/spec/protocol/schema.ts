@@ -33,13 +33,16 @@ export type Info = {
 }
 
 export type Spec = {
+  info: Info
   plugins: {
-    gpt_plugin: boolean // if description want to create a chatgpt plugin, set true
-    doc: boolean // default false
-    test: boolean // default false
+    // if description want to create a chatgpt plugin or openai plugin, set true
+    openai_plugin: boolean
+    // default false, only if user want to create doc
+    doc: boolean
+    // default false, only if user want to create test
+    test: boolean
   }
   entities: Entity[]
   apis: Operation[]
   pages: Page[]
-  info: Info
 }

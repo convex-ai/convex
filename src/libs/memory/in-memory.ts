@@ -6,8 +6,14 @@ export class Memory {
   public prisma = ''
   public openapi?: OpenAPI
 
+  public renderConfig: {
+    origin: string
+  } = {
+    origin: 'https://{!CHANGE_ME!}',
+  }
+
   validate(): boolean {
-  //   TODO: https://github.com/microsoft/TypeChat/blob/main/src/validate.ts
+    //   TODO: https://github.com/microsoft/TypeChat/blob/main/src/validate.ts
     return true
   }
 
